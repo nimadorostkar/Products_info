@@ -14,8 +14,7 @@ SECRET_KEY = 'django-insecure-&dj%2q9z6sf%9*kh!fed!@!()k^8n2o1p5cdy@6riy+rym3_fz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -76,7 +75,6 @@ DATABASES = {
 }
 
 
-
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
        'django_filters.rest_framework.DjangoFilterBackend'
@@ -98,13 +96,6 @@ REST_FRAMEWORK = {
 }
 
 
-
-
-
-
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -124,8 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -136,7 +125,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 
 # Static files (CSS, JavaScript, Images)
