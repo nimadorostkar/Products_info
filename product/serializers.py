@@ -12,8 +12,8 @@ class TypeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(read_only=True, many=True)
-    type = TypeSerializer(read_only=True, many=True)
+    category = CategorySerializer(read_only=True)
+    type = TypeSerializer(read_only=True)
     class Meta:
         model = Product
-        fields = ('id', 'name', 'barcode', 'category', 'type', 'image')
+        fields = ('id', 'name', 'barcode', 'category', 'type', 'price', 'off_price', 'off_percent', 'image')
