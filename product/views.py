@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.http import HttpResponse
 
-
 class Product_Info(APIView):
     permission_classes = [AllowAny]
     def get(self, request, format=None):

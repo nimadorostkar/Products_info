@@ -4,3 +4,4 @@ django-import-export==3.0.1
 djangorestframework==3.14.0
 django-filter==22.1
 django-cors-headers==3.13.0
+django-resized==1.0.2

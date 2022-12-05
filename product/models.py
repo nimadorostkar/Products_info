@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.html import format_html
+from django_resized import ResizedImageField
 
 class Category(models.Model):
     name = models.CharField(max_length=256, unique=True)
@@ -19,7 +20,8 @@ class Product(models.Model):
     price = models.CharField(max_length=256, default=0)
     off_price = models.CharField(max_length=256, default=0)
     off_percent = models.CharField(max_length=256, default=0)
-    image = models.ImageField(default='products/default.png', upload_to='products')
+    image = ResizedImageField(size=[200, 200], default='products/default.png', upload_to='products')
+
     def __str__(self):
         return str(self.name)
     def img(self):
