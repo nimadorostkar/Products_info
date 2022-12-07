@@ -12,12 +12,17 @@ class Product_Info(APIView):
         try:
             barcode = request.GET.get('barcode')
         except:
-            return Response("Add barcode in parameters", status=status.HTTP_400_BAD_REQUEST)
+            return HttpResponse('null', content_type="text/plain")
         try:
             query = models.Product.objects.get(barcode=barcode)
             serializer = serializers.ProductSerializer(query)
-            res = ''.join(r'{:04X},'.format(ord(chr)) for chr in serializer.data['name'])
-            output = str(res) + '\n' + serializer.data['price'] + '\n' + serializer.data['off_price'] + '\n' + serializer.data['off_percent'] + '\n' + request.META['HTTP_HOST']+serializer.data['image']
-            return HttpResponse(output, content_type="text/plain", status=status.HTTP_200_OK)
+            print('---------')
+
+            output = serializer.data['name'] + '\n' + \
+                     "{:,}".format(int(serializer.data['price'])) + '\n' + \
+                     "{:,}".format(int(serializer.data['off_price'])) + '\n' + \
+                     serializer.data['off_percent'] + '\n' + \
+                     str(query.image.name)[9:]
+            return HttpResponse(output, content_type="text/plain")
         except:
-            return Response("There is no product with this barcode", status=status.HTTP_400_BAD_REQUEST)
+            return HttpResponse('null', content_type="text/plain")
