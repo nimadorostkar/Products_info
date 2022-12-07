@@ -16,8 +16,6 @@ class Product_Info(APIView):
         try:
             query = models.Product.objects.get(barcode=barcode)
             serializer = serializers.ProductSerializer(query)
-            print('---------')
-
             output = serializer.data['name'] + '\n' + \
                      "{:,}".format(int(serializer.data['price'])) + '\n' + \
                      "{:,}".format(int(serializer.data['off_price'])) + '\n' + \
