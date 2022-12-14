@@ -47,6 +47,7 @@ chrt = [
 ['6CC', 'FEEF', 'FEF0', 'FEF4', 'FEF3', 0]
 ]
 
+
 def GetCharRow(value):
     for row in chrt:
         if value == row[0]:
@@ -80,6 +81,9 @@ def CharType(chr, next, back):
         return (1)
 
 
+
+
+
 class Product_Info(APIView):
     permission_classes = [AllowAny]
     def get(self, request, format=None):
@@ -107,12 +111,14 @@ class Product_Info(APIView):
             for s in utf32name.split():
                 if s.isdigit():
                     utf32name = utf32name.replace(s, s[::-1])
+            #product_name = utf32name[::-1]
+            product_name = utf32name
 
-            output = utf32name[::-1] + '\n' + \
+            output = product_name + '\n' + \
                      "{:,}".format(int(serializer.data['price'])) + '\n' + \
                      "{:,}".format(int(serializer.data['off_price'])) + '\n' + \
                      serializer.data['off_percent'] + '\n' + \
-                     str(query.image.name)[9:]
+                     "/"+str(query.image.name)[9:]
             return HttpResponse(output, content_type="text/plain")
         except:
             return HttpResponse('null', content_type="text/plain")
