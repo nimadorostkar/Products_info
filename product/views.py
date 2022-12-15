@@ -111,8 +111,8 @@ class Product_Info(APIView):
             for s in utf32name.split():
                 if s.isdigit():
                     utf32name = utf32name.replace(s, s[::-1])
-            #product_name = utf32name[::-1]
-            product_name = utf32name
+            product_name = utf32name[::-1]
+            #product_name = utf32name
 
             output = product_name + '\n' + \
                      "{:,}".format(int(serializer.data['price'])) + '\n' + \
